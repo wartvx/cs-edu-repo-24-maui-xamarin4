@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:FirstMauiApp.Pages"
+             x:Class="FirstMauiApp.Pages.ProfilePage"
+             Title="Ваш профиль">
+
+    <VerticalStackLayout>
+
+<!--
+        <Label 
+            Text="HomeApp - доступ"
+            Padding="30,10,30,10"
+            HorizontalOptions="Center"
+            FontSize="Title" />
+-->
+
+        <TableView
+            x:Name="userDataTable">
+        <TableView.Root>
+          <TableRoot>
+
+              <TableSection
+                  Title="Данные пользователя">
+                  <EntryCell
+                      x:Name="loginEntry"
+                      Label="Имя"
+                      Keyboard="Default"
+                       />
+                      <!--
+                      Text="Андрей"
+                      -->
+                  <EntryCell
+                      x:Name="emailEntry"
+                      Label="E-mail"
+                      Keyboard="Default"
+                       />
+                      <!--
+                      Text="andrew@homeapp.com"
+                      -->
+              </TableSection>
+
+              <TableSection
+                  Title="Настройки доступа">
+                  <SwitchCell
+                      x:Name="gasSwitch"
+                      Text="Управление газом"
+                      OnChanged="NotifyUser"
+                      OnColor="RoyalBlue" />
+                  <SwitchCell
+                      x:Name="climateSwitch"
+                      Text="Управление климатом"
+                      OnChanged="NotifyUser"
+                      OnColor="RoyalBlue" />
+                  <SwitchCell
+                      x:Name="electroSwitch"
+                      Text="Электропитание"
+                      OnChanged="NotifyUser"
+                      OnColor="RoyalBlue" />
+              </TableSection>
+
+          </TableRoot>
+        </TableView.Root>
+        </TableView>
+
+        <Button
+            x:Name="saveButton"
+            Text="Сохранить"
+            Clicked="OnSaveClicked"
+            Margin="10,10,10,10" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

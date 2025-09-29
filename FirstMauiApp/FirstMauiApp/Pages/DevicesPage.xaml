@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:FirstMauiApp.Pages"
+             x:Class="FirstMauiApp.Pages.DevicesPage"
+             Title="DevicesPage">
+
+<!--
+-->
+    <ContentPage.Resources>
+        <StyleSheet Source="/Static/DevicesPageW.css" />
+    </ContentPage.Resources>
+
+    <Grid
+        Margin="30"
+        RowSpacing="25"
+        RowDefinitions="Auto,*,Auto">
+
+        <Label
+            Grid.Row="0"
+            Text="HomeApp - Ваши устройства"
+            StyleId="header"
+            HorizontalOptions="Center"
+            FontSize="Title"
+            Padding="30,10,30,10" />
+
+        <ScrollView
+            Grid.Row="1"
+            x:Name="scrollView"
+            Scrolled="OnScrollViewScrolled"
+            BackgroundColor="AliceBlue"
+            Orientation="Vertical"
+            VerticalScrollBarVisibility="Default"
+            Margin="20">
+        </ScrollView>
+
+        <Button
+            Grid.Row="2"
+            Text="Scroll to end"
+            StyleClass="btn-add"
+            Clicked="OnButtonClicked" />
+
+    </Grid>
+
+</ContentPage>

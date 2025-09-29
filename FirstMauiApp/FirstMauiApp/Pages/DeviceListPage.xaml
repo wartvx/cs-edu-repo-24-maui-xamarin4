@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:FirstMauiApp.Pages"
+             x:Class="FirstMauiApp.Pages.DeviceListPage"
+             Shell.NavBarIsVisible="False"
+             Title="DeviceListPage">
+
+<!--
+    <ContentPage.Resources>
+        <StyleSheet Source="/Static/DevicesPageW.css" />
+    </ContentPage.Resources>
+-->
+
+<!--
+    <VerticalStackLayout
+        x:Name="verticalStackLayout"
+        Padding="30,0"
+        Spacing="25">
+-->
+
+    <Grid
+        Margin="30"
+        RowSpacing="25"
+        RowDefinitions="Auto,*,Auto,Auto,Auto,Auto,Auto">
+
+        <Label
+            Grid.Row="0"
+            Text="HomeApp - Ваши устройства"
+            FontSize="Large"
+            Padding="30,10,30,10"
+            StyleId="header"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+
+<!--
+ItemTapped="deviceList_ItemTapped"
+ItemSelected="deviceList_ItemSelected"
+ItemsSource="{Binding Devices}"
+ItemsSource="{Binding DeviceGroups}"
+-->
+
+        <ListView
+            Grid.Row="1"
+            x:Name="deviceList"
+            ItemSelected="deviceList_ItemSelected"
+            ItemsSource="{Binding DeviceGroups}"
+            IsGroupingEnabled="True"
+            GroupDisplayBinding="{Binding Name}"
+            HasUnevenRows="True"
+            SeparatorVisibility="Default"
+            CachingStrategy="RecycleElement"
+            RowHeight="90">
+            
+<!--
+            <ListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label
+                            Text="{Binding Name}"
+                            BackgroundColor="LightGray"
+                            FontSize="18"
+                            FontAttributes="Bold" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.GroupHeaderTemplate>
+-->
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+<!--
+                    <TextCell
+                        Text="{Binding Name}"
+                        Detail="{Binding Description}"
+                        TextColor="Black"
+                        DetailColor="Gray" />
+-->
+
+<!--
+                    <ImageCell
+                        ImageSource="{Binding Image}"
+                        Text="{Binding Name}"
+                        Detail="{Binding Description}"
+                        TextColor="DodgerBlue"
+                        DetailColor="Gray" />
+-->
+
+<!--
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+
+                            <Image Source="{Binding Image}" 
+                                  WidthRequest="50" 
+                                  HeightRequest="50" 
+                                  Aspect="AspectFit" />
+
+                            <StackLayout>
+
+                                <Label
+                                    Text="{Binding Name}"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Padding="10, 5, 10, 5" />
+
+                                <Label 
+                                    Text="{Binding Description}" 
+                                    Padding="10, 5, 0, 0" />
+
+                            </StackLayout>
+
+                        </StackLayout>
+                    </ViewCell>
+-->
+
+                    <TextCell
+                        Text="{Binding Name}"
+                        Detail="{Binding Description}"
+                        TextColor="DodgerBlue"
+                        DetailColor="Gray" />
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <Button
+            Grid.Row="2"
+            x:Name="goToProfileButton"
+            Text="Профиль"
+            Clicked="OnGoToProfile" />
+
+        <Button
+            Grid.Row="3"
+            x:Name="addButton"
+            Text="Новое устройство"
+            Clicked="AddDevice" />
+
+        <Button
+            Grid.Row="4"
+            x:Name="editButton"
+            Text="✏️ Изменить"
+            Clicked="EditDevice" />
+
+        <Button
+            Grid.Row="5"
+            x:Name="deleteButton"
+            Text="Удалить устройство"
+            Clicked="RemoveDevice" />
+
+        <Button
+            Grid.Row="6"
+            x:Name="goToLogoutButton"
+            Text="Выход"
+            Clicked="OnLogout" />
+<!--
+x:Name="removeButton"
+Text="Удалить устройство"
+Clicked="RemoveDevice"
+-->
+
+    </Grid>
+
+</ContentPage>

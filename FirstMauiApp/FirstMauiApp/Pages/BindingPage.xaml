@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:FirstMauiApp.Pages"
+             x:Class="FirstMauiApp.Pages.BindingPage"
+             Title="BindingPage">
+
+    <VerticalStackLayout>
+
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label
+            Text="H"
+            BindingContext="{x:Reference Name=slider}"
+            Rotation="{Binding Path=Value}"
+            FontSize="270"
+            HorizontalOptions="Center" />
+
+        <Slider
+            x:Name="slider"
+            Maximum="360"
+            MinimumTrackColor="DodgerBlue"
+            MaximumTrackColor="Gray"
+            ThumbColor="DodgerBlue" />
+
+        <Label
+            BindingContext="{x:Reference slider}"
+            Text="{Binding Value, StringFormat='Повторот на {0:F0} градусов'}"
+            FontAttributes="Bold"
+            FontSize="Large"
+            HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

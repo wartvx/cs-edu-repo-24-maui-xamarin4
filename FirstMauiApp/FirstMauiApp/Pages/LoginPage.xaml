@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:FirstMauiApp.Pages"
+             xmlns:extensions="clr-namespace:FirstMauiApp.Extensions"
+             x:Class="FirstMauiApp.Pages.LoginPage"
+             Title="LoginPage">
+
+<!--
+// добавленные пользователем записи словаря ресурсов
+// используем ресурсы уровня текущей страницы и stand-alone словарь
+// подключаем словарь либо по пути, либо по имени
+// важно, чтобы относительный путь начинался со слеша
+<ResourceDictionary Source="/Resources/UserDictionary/MessageTextStyle.xaml" />
+<userdict:MessageTextStyle />
+//-
+xmlns:userdict="clr-namespace:FirstMauiApp.Resources.UserDictionary"
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <userdict:MessageTextStyle />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+-->
+
+<!--
+// добавленные пользователем записи словаря ресурсов
+// используем ресурсы уровня текущей страницы
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="errorColor">#FF0000</Color>
+            <x:Double x:Key="errorFont">16</x:Double>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+-->
+
+    <VerticalStackLayout
+        x:Name="verticalStackLayout"
+        Padding="30,0"
+        Spacing="25">
+
+<!--
+// добавленные пользователем записи словаря ресурсов
+// используем ресурсы уровня отдельного элемента
+        <VerticalStackLayout.Resources>
+            <ResourceDictionary>
+                <Color x:Key="errorColor">#FF0000</Color>
+                <x:Double x:Key="errorFont">16</x:Double>
+            </ResourceDictionary>
+        </VerticalStackLayout.Resources>
+-->
+
+        <Label 
+            Text="HomeApp - here's your cosy home"
+            TextColor="{extensions:RgbExtension Red=255, Green=0, Blue=0}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button
+            x:Name="loginBtn"
+            Text="{x:Static pages:LoginPage.BUTTON_TEXT}"
+            Style="{StaticResource buttonStyle}"
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="OnLoginClicked"
+            HorizontalOptions="Fill" />
+<!--
+            CornerRadius="{extensions:ButtonViewExtension ButtonStyle=SemiRound}"
+-->
+
+        <Label 
+            x:Name="infoDeviceLabel"
+            Text=""
+            TextColor="{extensions:RgbExtension Red=255, Blue=255, Green=0}"
+            FontSize="Small"
+            Padding="30,10,30,10"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+<!--
+            TextColor="{StaticResource Key=errorColor}"
+            FontSize="{StaticResource Key=errorFont}"
+
+            TextColor="{DynamicResource Key=errorColor}"
+            FontSize="{DynamicResource Key=errorFont}"
+
+            TextColor="Red"
+            FontSize="14"
+-->
+        <Label 
+            x:Name="infoMessageLabel"
+            Text=""
+            TextColor="{DynamicResource Key=errorColor}"
+            FontSize="{DynamicResource Key=errorFont}"
+            Padding="30,10,30,10"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="FirstMauiApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:FirstMauiApp"
+    xmlns:pages="clr-namespace:FirstMauiApp.Pages"
+    Shell.FlyoutBehavior="Flyout"
+    Title="FirstMauiApp Main Title">
+
+<!--
+-->
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate pages:LoginPage}"
+        Route="LoginPage" />
+
+    <ShellContent
+        Title="Register"
+        ContentTemplate="{DataTemplate pages:RegisterPage}"
+        Route="RegisterPage" />
+
+    <ShellContent
+        Title="Profile"
+        ContentTemplate="{DataTemplate pages:ProfilePage}"
+        Route="ProfilePage" />
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate pages:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent
+        Title="Rooms"
+        ContentTemplate="{DataTemplate pages:RoomsPage}"
+        Route="RoomsPage" />
+
+    <ShellContent
+        Title="Devices"
+        ContentTemplate="{DataTemplate pages:DevicesPage}"
+        Route="DevicesPage" />
+
+    <ShellContent
+        Title="DeviceList"
+        ContentTemplate="{DataTemplate pages:DeviceListPage}"
+        Route="DeviceListPage" />
+
+    <ShellContent
+        Title="DeviceContol"
+        ContentTemplate="{DataTemplate pages:DeviceContolPage}"
+        Route="DeviceContolPage" />
+
+<!--
+    <ShellContent
+        Title="DeviceManual"
+        ContentTemplate="{DataTemplate pages:DeviceManualPage}"
+        Route="DeviceManualPage" />
+
+    <ShellContent
+        Title="Device"
+        ContentTemplate="{DataTemplate pages:DevicePage}"
+        Route="DevicePage" />
+-->
+
+    <ShellContent
+        Title="Climate"
+        ContentTemplate="{DataTemplate pages:ClimatePage}"
+        Route="ClimatePage" />
+
+    <ShellContent
+        Title="Binding"
+        ContentTemplate="{DataTemplate pages:BindingPage}"
+        Route="BindingPage" />
+
+    <ShellContent
+        Title="BindingMode"
+        ContentTemplate="{DataTemplate pages:BindingModePage}"
+        Route="BindingModePage" />
+
+    <ShellContent
+        Title="Grid"
+        ContentTemplate="{DataTemplate pages:GridPage}"
+        Route="GridPage" />
+
+    <ShellContent
+        Title="GridMerge"
+        ContentTemplate="{DataTemplate pages:GridMergePage}"
+        Route="GridMergePage" />
+
+    <ShellContent
+        Title="Web"
+        ContentTemplate="{DataTemplate pages:WebPage}"
+        Route="WebPage" />
+
+    <ShellContent
+        Title="Span"
+        ContentTemplate="{DataTemplate pages:SpanPage}"
+        Route="SpanPage" />
+
+    <ShellContent
+        Title="About"
+        ContentTemplate="{DataTemplate pages:AboutPage}"
+        Route="AboutPage" />
+
+<!--
+-->
+    <Shell.FlyoutFooter>
+        <Grid Padding="15">
+        </Grid>
+    </Shell.FlyoutFooter>
+
+</Shell>

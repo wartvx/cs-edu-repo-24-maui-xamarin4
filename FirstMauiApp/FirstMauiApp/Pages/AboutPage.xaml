@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:FirstMauiApp.Pages"
+             xmlns:cmp="clr-namespace:Microsoft.Maui.Controls.Compatibility;assembly=Microsoft.Maui.Controls"
+             x:Class="FirstMauiApp.Pages.AboutPage"
+             Title="AboutPage">
+
+    <VerticalStackLayout>
+
+<!--
+RelativeLayout in .NET MAUI is placed in
+ the Microsoft.Maui.Controls.Compatibility namespace
+ and should be used primarily for compatibility
+ with existing Xamarin.Forms code
+
+In .NET MAUI, RelativeLayout is not recommended
+ and is considered a compatibility control for migration from Xamarin.Forms.
+ While it exists in the Microsoft.Maui.Controls.Compatibility namespace,
+ it's best to avoid it for new projects.
+Instead, Grid is the recommended layout for achieving similar results
+ with better performance, according to a Microsoft Learn article.
+ You can also explore AbsoluteLayout within the compatibility namespace
+ for more complex scenarios, but Grid is generally preferred
+-->
+
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <cmp:RelativeLayout
+            x:Name="container">
+
+            <BoxView
+              x:Name="boxView1"
+              WidthRequest="50"
+              HeightRequest="50"
+              Color="Blue"
+              cmp:RelativeLayout.XConstraint=
+                  "{cmp:ConstraintExpression
+                      Type=RelativeToParent,
+                      Factor=0.5,
+                      Property=Width,
+                      Constant=-25
+                      }"
+              cmp:RelativeLayout.YConstraint=
+                  "{cmp:ConstraintExpression
+                      Type=RelativeToParent,
+                      Factor=0.5,
+                      Property=Height,
+                      Constant=-25
+                      }" />
+
+            <BoxView
+              x:Name="boxView2"
+              WidthRequest="50"
+              HeightRequest="50"
+              Color="DarkBlue"
+              cmp:RelativeLayout.XConstraint=
+                  "{cmp:ConstraintExpression
+                      Type=RelativeToView,
+                      ElementName=boxView1,
+                      Property=X,
+                      Constant=-100
+                      }"
+              cmp:RelativeLayout.YConstraint=
+                  "{cmp:ConstraintExpression
+                      Type=RelativeToView,
+                      ElementName=boxView1,
+                      Property=Y,
+                      Constant=0
+                      }" />
+
+            <BoxView
+              x:Name="boxView3"
+              WidthRequest="50"
+              HeightRequest="50"
+              Color="LightBlue"
+              cmp:RelativeLayout.XConstraint=
+                  "{cmp:ConstraintExpression
+                      Type=RelativeToView,
+                      ElementName=boxView1,
+                      Property=X,
+                      Constant=100
+                      }"
+              cmp:RelativeLayout.YConstraint=
+                  "{cmp:ConstraintExpression
+                      Type=RelativeToView,
+                      ElementName=boxView1,
+                      Property=Y,
+                      Constant=0
+                      }" />
+
+        </cmp:RelativeLayout>
+
+    </VerticalStackLayout>
+
+</ContentPage>

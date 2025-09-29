@@ -107,7 +107,7 @@ public partial class DeviceListPage : ContentPage
             .Select(g => new Group<string, HomeDevice>(g.Key!, g));
 
         // Сохраним
-        DeviceGroups = [];
+        // DeviceGroups = [];
         DeviceGroups = new ObservableCollection<Group<string, HomeDevice>>(devicesByRooms);
 
         BindingContext = this;
@@ -248,10 +248,10 @@ public partial class DeviceListPage : ContentPage
         // Обновляем интерфейс
         var grp = DeviceGroups.FirstOrDefault(g => g.Name == SelectedDevice.Room);
         var deviceToRemove = grp?.FirstOrDefault(d => d.Id == deviceToDelete.Id);
-        // if (deviceToRemove is not null)
-        //     grp?.Remove(deviceToRemove);
-        if (grp is not null)
-            DeviceGroups.Remove(grp);
+        if (deviceToRemove is not null)
+            grp?.Remove(deviceToRemove);
+        // if (grp is not null)
+        //     DeviceGroups.Remove(grp);
     }
 
 

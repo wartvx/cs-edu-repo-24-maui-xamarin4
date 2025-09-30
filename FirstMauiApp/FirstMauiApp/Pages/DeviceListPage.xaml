@@ -49,11 +49,9 @@ ItemsSource="{Binding DeviceGroups}"
             GroupDisplayBinding="{Binding Name}"
             HasUnevenRows="True"
             SeparatorVisibility="Default"
-            RowHeight="90">
-<!--
             CachingStrategy="RecycleElement"
--->
-            
+            RowHeight="90">
+
 <!--
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>

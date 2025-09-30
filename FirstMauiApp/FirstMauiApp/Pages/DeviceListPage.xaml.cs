@@ -13,12 +13,14 @@ public partial class DeviceListPage : ContentPage
     // public List<HomeDevice> Devices { get; set; } = [];
     // public ObservableCollection<HomeDevice> Devices { get; set; } = [];
 
+
     // группируемая коллекция
+
     // public ObservableCollection<Group<string, HomeDevice>> DeviceGroups
     // { get; set; } = [];
 
-    public ObservableRangeCollection<Group<string, HomeDevice>> DeviceGroups
-    { get; set; } = [];
+    public ObservableRangeCollection<Group<string, HomeDevice>>? DeviceGroups
+    { get; set; }
 
 
     // Ссылка на выбранный объект
@@ -102,6 +104,8 @@ public partial class DeviceListPage : ContentPage
 
     protected async override void OnAppearing()
     {
+        // base.OnAppearing();
+
         // Загрузка данных из базы
         var devicesFromDb = await App.HomeDevices.GetHomeDevices();
         // Мапим сущности БД в сущности бизнес-логики
@@ -112,14 +116,15 @@ public partial class DeviceListPage : ContentPage
             .Select(g => new Group<string, HomeDevice>(g.Key!, g));
 
         // Сохраним
-        DeviceGroups = [];
-        // DeviceGroups.Add(new Group<string, HomeDevice>("test",
-        //     new List<HomeDevice> { new HomeDevice("t1") }));
-        // DeviceGroups = new ObservableCollection<Group<string, HomeDevice>>(devicesByRooms);
-        // DeviceGroups = new ObservableRangeCollection<Group<string, HomeDevice>>(devicesByRooms);
-        DeviceGroups.AddRange(new ObservableRangeCollection<Group<string, HomeDevice>>(devicesByRooms));
-        
+        // DeviceGroups = new ObservableCollection<Group<string, HomeDevice>>(
+        //     devicesByRooms);
+        DeviceGroups = new ObservableRangeCollection<Group<string, HomeDevice>>(
+            devicesByRooms);
+
         BindingContext = this;
+
+        //here is the magic
+        deviceList.ItemsSource = DeviceGroups;
 
         base.OnAppearing();
     }
@@ -255,12 +260,14 @@ public partial class DeviceListPage : ContentPage
         await App.HomeDevices.DeleteHomeDevice(deviceToDelete);
 
         // Обновляем интерфейс
-        var grp = DeviceGroups.FirstOrDefault(g => g.Name == SelectedDevice.Room);
+        var grp = DeviceGroups?.FirstOrDefault(g => g.Name == SelectedDevice.Room);
         var deviceToRemove = grp?.FirstOrDefault(d => d.Id == deviceToDelete.Id);
         if (deviceToRemove is not null)
+        {
             grp?.Remove(deviceToRemove);
-        // if (grp is not null)
-        //     DeviceGroups.Remove(grp);
+            if (grp?.Count == 0)
+                DeviceGroups?.Remove(grp);
+        }
     }
 
 

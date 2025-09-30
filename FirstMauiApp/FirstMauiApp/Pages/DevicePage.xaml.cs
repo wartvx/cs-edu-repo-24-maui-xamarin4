@@ -250,9 +250,9 @@ public partial class DevicePage : ContentPage
                         Shell.Current.Navigation.NavigationStack.Count - 2]);
                 Shell.Current.Navigation.InsertPageBefore(new DeviceListPage(), this);
                 await Shell.Current.Navigation.PopAsync();
+                return;
                 */
             }
-            return;
         }
 
         var updatedDevice = App.Mapper.Map<Data.HomeDeviceEntity>(HomeDevice);

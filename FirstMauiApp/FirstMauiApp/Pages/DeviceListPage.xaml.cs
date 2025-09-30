@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 
 using FirstMauiApp.Models;
+using FirstMauiApp.Extensions;
 
 
 namespace FirstMauiApp.Pages;
@@ -13,8 +14,12 @@ public partial class DeviceListPage : ContentPage
     // public ObservableCollection<HomeDevice> Devices { get; set; } = [];
 
     // группируемая коллекция
-    public ObservableCollection<Group<string, HomeDevice>> DeviceGroups
+    // public ObservableCollection<Group<string, HomeDevice>> DeviceGroups
+    // { get; set; } = [];
+
+    public ObservableRangeCollection<Group<string, HomeDevice>> DeviceGroups
     { get; set; } = [];
+
 
     // Ссылка на выбранный объект
     HomeDevice? SelectedDevice;
@@ -107,9 +112,13 @@ public partial class DeviceListPage : ContentPage
             .Select(g => new Group<string, HomeDevice>(g.Key!, g));
 
         // Сохраним
-        // DeviceGroups = [];
-        DeviceGroups = new ObservableCollection<Group<string, HomeDevice>>(devicesByRooms);
-
+        DeviceGroups = [];
+        // DeviceGroups.Add(new Group<string, HomeDevice>("test",
+        //     new List<HomeDevice> { new HomeDevice("t1") }));
+        // DeviceGroups = new ObservableCollection<Group<string, HomeDevice>>(devicesByRooms);
+        // DeviceGroups = new ObservableRangeCollection<Group<string, HomeDevice>>(devicesByRooms);
+        DeviceGroups.AddRange(new ObservableRangeCollection<Group<string, HomeDevice>>(devicesByRooms));
+        
         BindingContext = this;
 
         base.OnAppearing();

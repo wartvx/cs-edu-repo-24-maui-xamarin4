@@ -49,8 +49,10 @@ ItemsSource="{Binding DeviceGroups}"
             GroupDisplayBinding="{Binding Name}"
             HasUnevenRows="True"
             SeparatorVisibility="Default"
-            CachingStrategy="RecycleElement"
             RowHeight="90">
+<!--
+            CachingStrategy="RecycleElement"
+-->
             
 <!--
             <ListView.GroupHeaderTemplate>
@@ -124,11 +126,13 @@ ItemsSource="{Binding DeviceGroups}"
 
         </ListView>
 
+<!--
         <Button
             Grid.Row="2"
             x:Name="goToProfileButton"
             Text="Профиль"
             Clicked="OnGoToProfile" />
+-->
 
         <Button
             Grid.Row="3"
@@ -144,19 +148,16 @@ ItemsSource="{Binding DeviceGroups}"
 
         <Button
             Grid.Row="5"
-            x:Name="deleteButton"
+            x:Name="removeButton"
             Text="Удалить устройство"
             Clicked="RemoveDevice" />
 
+<!--
         <Button
             Grid.Row="6"
             x:Name="goToLogoutButton"
             Text="Выход"
             Clicked="OnLogout" />
-<!--
-x:Name="removeButton"
-Text="Удалить устройство"
-Clicked="RemoveDevice"
 -->
 
     </Grid>

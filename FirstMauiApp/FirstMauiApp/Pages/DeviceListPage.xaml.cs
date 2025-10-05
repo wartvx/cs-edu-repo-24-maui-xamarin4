@@ -19,8 +19,8 @@ public partial class DeviceListPage : ContentPage
     // public ObservableCollection<Group<string, HomeDevice>> DeviceGroups
     // { get; set; } = [];
 
-    public ObservableRangeCollection<Group<string, HomeDevice>>? DeviceGroups
-    { get; set; }
+    public ObservableRangeCollection<Group<string, HomeDevice>> DeviceGroups
+    { get; set; } = [];
 
 
     // Ссылка на выбранный объект
@@ -97,14 +97,14 @@ public partial class DeviceListPage : ContentPage
         */
 
         /*
-        BindingContext = this;
         */
+        BindingContext = this;
     }
 
 
     protected async override void OnAppearing()
     {
-        // base.OnAppearing();
+        base.OnAppearing();
 
         // Загрузка данных из базы
         var devicesFromDb = await App.HomeDevices.GetHomeDevices();
@@ -118,15 +118,17 @@ public partial class DeviceListPage : ContentPage
         // Сохраним
         // DeviceGroups = new ObservableCollection<Group<string, HomeDevice>>(
         //     devicesByRooms);
-        DeviceGroups = new ObservableRangeCollection<Group<string, HomeDevice>>(
-            devicesByRooms);
+        // DeviceGroups = new ObservableRangeCollection<Group<string, HomeDevice>>(
+        //     devicesByRooms);
+        DeviceGroups.ReplaceRange(devicesByRooms);
 
-        BindingContext = this;
+
+        // BindingContext = this;
 
         //here is the magic
-        deviceList.ItemsSource = DeviceGroups;
+        // deviceList.ItemsSource = DeviceGroups;
 
-        base.OnAppearing();
+        // base.OnAppearing();
     }
 
 
